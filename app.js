@@ -4,7 +4,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const path = require("path");
-
+const db = require("./config/dbConnection");
+//router
+const user = require("./rauters/user");
+const owner = require("./rauters/owner");
+const producst = require("./rauters/products");
 //env envair ments
 const env = require("dotenv").config()
 const PORT = process.env.PORT || 8080;
@@ -18,9 +22,9 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 
 //raout
-app.get("/", (req, res) => {
-    res.send("<h3>hey</h3>")
-});
+app.use("/", user);
+app.use("/owner", owner);
+app.use("/producst", producst)
 
 app.listen(PORT, () => {console.log(`http://localhost:${PORT}`)});
 

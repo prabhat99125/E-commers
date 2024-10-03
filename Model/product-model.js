@@ -1,16 +1,16 @@
 const mongoose = require("mongoose");
 
 const producSchema = mongoose.Schema({
-    imege: String,
-    name: String,
-    price: Number,
-    discount: {
-        type: Number,
-        default: 0
+    fullname : String,
+    email : String,
+    password : String,
+    
+    products : {
+        type : Array,
+        default : []
     },
-    bgColor: String,
-    panelColor: String,
-    textColor: String
+    gstn : String,
+    picture : String
 });
 
 module.exports = mongoose.model("products", producSchema);
