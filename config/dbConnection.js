@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
+require("dotenv").config()
 
-mongoose.connect("mongodb://localhost:27017/ecom")
+const dblink = process.env.dbConnection;
+
+mongoose.connect(`${dblink}/ecom`)
 .then(() => {
     console.log("db is conected");
 }).catch((err) => {
